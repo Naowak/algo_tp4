@@ -1,6 +1,7 @@
 import sys
 import Ville
 import Camion
+import Solution
 
 if len(sys.argv) < 2 :
 	raise Exception("Usage : <nom_fichier>\n")
@@ -11,16 +12,19 @@ fichier = open(nom_fichier, "r")
 capacite_camion = fichier.readline().split(" ")[1] 
 fichier.readline() #ligne inutile dans le fichier
 
-camion = Camion.Camion()
+villes = list()
 
 i = 0
 
 for ligne in fichier :
 	t = ligne.split("\t")
-	ville = Ville.Ville(float(t[0]), float(t[1]), float(t[2]), float(t[3]), float(t[4]), float(t[5]), float(t[6]))
-	camion.add_ville(ville, i)
+	ville = Ville.Ville(int(t[0]), float(t[1]), float(t[2]), float(t[3]), float(t[4]), float(t[5]), float(t[6]))
+	villes.append(ville)
 	i = i + 1
-	print(camion.cout())
+
+S = Solution.Solution(villes)
+print(S)
+
 
 fichier.close()
 

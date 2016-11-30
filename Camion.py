@@ -22,8 +22,15 @@ class Camion :
 		self._villes.insert(pos, ville)
 		self._nb_villes += 1
 
-	def remove_ville(self, ville) :
+	def remove_ville(self, pos) :
 		if not isinstance(ville, Ville.Ville) :
 			raise Exception("Error Camion::remove_ville : ville is not a ville\n")
+		ville = self.get_ville(pos)
 		self._villes.remove(ville)
 		self._nb_villes -= 1
+
+	def get_ville(self, pos) :
+		return self._villes[pos]
+
+	def __len__(self) :
+		return self._nb_villes
