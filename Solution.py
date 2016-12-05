@@ -3,26 +3,28 @@ import Camion
 import random
 
 class Solution :
-	def __init__(self, villes) :
-		if not isinstance(villes, list) :
-			raise Exception("Error Solution::__init__ : Villes isn't a list\n")
-		if len(villes) <= 1 :
-			raise Exception("Error Solution::__init__ : Villes list not long enough\n")
-
-		self.ville_depart = villes[0]
-		villes = villes[1:]
-
+	def __init__(self) :
+		self._ville_depart = None
 		self._camions = list()
 		self._cout = 0
+
+	def init_random(self, villes) :
+		if not isinstance(villes, list) :
+			raise Exception("Error Solution::init_random : Villes isn't a list\n")
+		if len(villes) <= 1 :
+			raise Exception("Error Solution::init_random : Villes list not long enough\n")
+
+		self._ville_depart = villes[0]
+		villes = villes[1:]
 
 		compteur = 0
 
 		for v in villes :
 			if len(self._camions) == 0 :
 				self._camions.append(Camion.Camion())
-				self._camions[0].add_ville(self.ville_depart, 0)
+				self._camions[0].add_ville(self._ville_depart, 0)
 				self._camions[0].add_ville(v, 1)
-				self._camions[0].add_ville(self.ville_depart, 2)
+				self._camions[0].add_ville(self._ville_depart, 2)
 			else :
 				self._camions[0].add_ville(v, random.choice(range(len(self._camions[0]))[1:-1]))
 			compteur += 1

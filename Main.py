@@ -22,7 +22,8 @@ for ligne in fichier :
 	villes.append(ville)
 	i = i + 1
 
-S = Solution.Solution(villes)
+S = Solution.Solution()
+S.init_random(villes)
 print(S)
 
 
