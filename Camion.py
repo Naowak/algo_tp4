@@ -23,14 +23,19 @@ class Camion :
 		self._nb_villes += 1
 
 	def remove_ville(self, pos) :
-		if not isinstance(ville, Ville.Ville) :
-			raise Exception("Error Camion::remove_ville : ville is not a ville\n")
 		ville = self.get_ville(pos)
 		self._villes.remove(ville)
 		self._nb_villes -= 1
 
 	def get_ville(self, pos) :
 		return self._villes[pos]
+
+	def copy(self) :
+		new_C = Camion()
+		new_C._nb_villes = self._nb_villes
+		for i in range(self._nb_villes) :
+			new_C._villes.append(self._villes[i])
+		return new_C
 
 	def __len__(self) :
 		return self._nb_villes

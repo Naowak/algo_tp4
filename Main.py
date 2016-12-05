@@ -3,6 +3,8 @@ import Ville
 import Camion
 import Solution
 
+NB_VOISINS = 50
+
 if len(sys.argv) < 2 :
 	raise Exception("Usage : <nom_fichier>\n")
 
@@ -24,7 +26,10 @@ for ligne in fichier :
 
 S = Solution.Solution()
 S.init_random(villes)
+Voisins = S.draw_N_voisins(NB_VOISINS)
 print(S)
+for v in Voisins :
+	print(v)
 
 
 fichier.close()
