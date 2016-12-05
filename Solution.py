@@ -31,6 +31,9 @@ class Solution :
 
 		self._cout = self._camions[0].cout()
 
+	def get_cout(self) :
+		return self._cout
+
 	def calcul_cout(self) :
 		self._cout = 0
 		for c in self._camions :
@@ -62,6 +65,8 @@ class Solution :
 			new_S._camions[new_camion].add_ville(new_S._ville_depart, 0)
 			new_S._camions[new_camion].add_ville(new_S._ville_depart, 1)
 		new_S.move_ville(new_S._camions[old_camion], old_pos, new_S._camions[new_camion], new_pos)
+		if(len(new_S._camions[old_camion]) <= 2) :
+			new_S._camions.remove(new_S._camions[old_camion])
 		return new_S
 
 	def all_voisins(self) :
@@ -80,6 +85,7 @@ class Solution :
 		return liste_all_voisins_pos
 
 	def draw_N_voisins(self, N) :
+		#retourne une liste de voisins
 		liste_all_voisins = self.all_voisins()
 		liste_voisins_to_do = list()
 		for i in range(N) :
@@ -92,6 +98,23 @@ class Solution :
 			voisins.append(self.create_voisin(v[0], v[1], v[2], v[3]))
 
 		return voisins
+
+	def compare(self, Solution) :
+		if(self > Solution) :
+			return 1
+		elif(self == Solution) :
+			return 0
+		return -1
+		
+
+	def __gt__(self, Solution) :
+		return self.get_cout() > Solution.get_cout()
+
+	def __lt__(self, Solution) :
+		return self.get_cout() < Solution.get_cout()
+
+	def __eq__(self, Solution) :
+		return self.get_cout() == Solution.get_cout()
 
 
 
