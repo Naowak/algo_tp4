@@ -4,7 +4,7 @@ import Camion
 import Solution
 
 NB_VOISINS = 200
-NB_INIT_SOLUTION = 30
+NB_INIT_SOLUTION = 1
 NB_ARRET = 30
 
 
@@ -66,10 +66,15 @@ for i in range(NB_INIT_SOLUTION) :
 				break
 
 
-#liste_solution_finale.sort(func_compare_sol)
-for l in liste_solution_finale :
-	print(l.get_cout())
+liste_solution_finale.sort(func_compare_sol)
+#for l in liste_solution_finale :
+#	print(l.get_cout())
 
+print("digraph {")
+for c in liste_solution_finale[0]._camions :
+	for i in range(c._nb_villes - 1) :
+		print("\t\t" + str(c.get_ville(i).get_id()) + " -> " + str(c.get_ville(i+1).get_id()) + ";")
+print("}")
 
 
 
