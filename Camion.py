@@ -39,3 +39,6 @@ class Camion :
 
 	def __len__(self) :
 		return self._nb_villes
+
+	def __eq__(self, camion) :
+		return len(camion) == len(self)

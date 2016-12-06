@@ -32,3 +32,5 @@ class Ville :
 	def get_dur(self) :
 		return self._dur
 	
+	def __eq__(self, ville) :
+		return self.get_id() == ville.get_id()

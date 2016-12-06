@@ -105,6 +105,14 @@ class Solution :
 		elif(self == Solution) :
 			return 0
 		return -1
+
+	def is_the_same(self, solution) :
+		if len(self._camions) != len(solution._camions) :
+			return False
+		for i in range(len(self._camions)) :
+			if self._camions[i] == solution._camions[i] :
+				return False
+		return True
 		
 
 	def __gt__(self, Solution) :
