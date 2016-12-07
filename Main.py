@@ -26,7 +26,7 @@ if len(sys.argv) < 2 :
 	raise Exception("Usage : <nom_fichier> <timer>\n")
 
 nom_fichier = sys.argv[1]
-timer = int(sys.argv[2]) - 3
+timer = int(sys.argv[2]) - 2
 fichier = open(nom_fichier, "r")
 
 capacite_camion = fichier.readline().split(" ")[1] 
