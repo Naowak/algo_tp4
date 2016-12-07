@@ -110,7 +110,7 @@ class Solution :
 		if len(self._camions) != len(solution._camions) :
 			return False
 		for i in range(len(self._camions)) :
-			if self._camions[i] == solution._camions[i] :
+			if not (self._camions[i] == solution._camions[i]) :
 				return False
 		return True
 		

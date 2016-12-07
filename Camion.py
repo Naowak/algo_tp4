@@ -41,4 +41,9 @@ class Camion :
 		return self._nb_villes
 
 	def __eq__(self, camion) :
-		return len(camion) == len(self)
+		if(self._nb_villes != camion._nb_villes) :
+			return False
+		for i in range(self._nb_villes) :
+			if not self.get_ville(i) == camion.get_ville(i) :
+				return False
+		return True
